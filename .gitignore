@@ -1,0 +1,21 @@
+# Logs
+*.log
+logs/
+
+# Dependency directories
+node_modules/
+vendor/
+
+# Build output
+dist/
+build/
+
+# Environment variables
+.env
+
+# IDE files (e.g., for VS Code)
+.vscode/
+
+# Ignore all .tmp files except 'important.tmp'
+*.tmp
+!important.tmp

@@ -14,17 +14,20 @@ router.get('/', async (req, res) => {
 
 // Create employee
 router.post('/', async (req, res) => {
-  const { name, email, password, designation } = req.body;
-  try {
-    let user = await User.findOne({ email });
-    if (user) return res.status(400).json({ error: 'Email already exists' });
+    const { name, email, password, designation } = req.body;
+    try {
+        let user = await User.findOne({ email });
+        if (user) return res.status(400).json({ error: 'Email already exists' });
 
-    user = new User({ name, email, password, designation, isSuperAdmin: false });
-    await user.save();
-    res.json({ user: { id: user._id, name: user.name, email: user.email, designation: user.designation } });
-  } catch (err) {
-    res.status(500).json({ error: 'Server error' });
-  }
+        user = new User({ name, email, password, designation, isSuperAdmin: false });
+        await user.save();
+        res.status(201).json({ 
+            user: { id: user._id, name: user.name, email: user.email, designation: user.designation } 
+        });
+    } catch (err) {
+        console.error("Employee Creation Error:", err); 
+        res.status(500).json({ error: 'Server error' });
+    }
 });
 
 // Delete employee

@@ -8,6 +8,7 @@ const connectDB = require('./config/db');
 
 const authRoutes = require('./routes/authRoutes');
 const employeeRoutes = require('./routes/employeeRoutes');
+const attendanceRoutes = require('./routes/attendance');
 
 const app = express();
 
@@ -20,6 +21,7 @@ connectDB();
 
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/employees', employeeRoutes);
+app.use('/api/v1/attendance', attendanceRoutes);
 
 const PORT = process.env.PORT || 3000;
 
